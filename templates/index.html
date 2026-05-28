@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Мої Завдання</h1>
+            <p class="subtitle">Керуй своїми завданнями легко та ефективно</p>
+        </header>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <h3>Всього</h3>
+                <p id="stat-total">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>✅ Виконано</h3>
+                <p id="stat-completed">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>⏳ Очікування</h3>
+                <p id="stat-pending">0</p>
+            </div>
+        </div>
+
+        <div class="add-todo-section">
+            <h2>Додати нове завдання</h2>
+            <form id="add-todo-form">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="todo-title" 
+                        placeholder="Назва завдання..." 
+                        required
+                        maxlength="200"
+                    >
+                </div>
+                <div class="form-group">
+                    <textarea 
+                        id="todo-description" 
+                        placeholder="Опис (опціонально)" 
+                        rows="3"
+                    ></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Категорія:</label>
+                        <select id="todo-category">
+                            <option value="Загальне">Загальне</option>
+                            <option value="Робота">Робота</option>
+                            <option value="Особисте">Особисте</option>
+                            <option value="Навчання">Навчання</option>
+                            <option value="Здоров'я">Здоров'я</option>
+                            <option value="Хобі">Хобі</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Пріоритет:</label>
+                        <select id="todo-priority">
+                            <option value="Низька">🟢 Низька</option>
+                            <option value="Нормальна" selected>🟡 Нормальна</option>
+                            <option value="Висока">🔴 Висока</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">➕ Додати завдання</button>
+            </form>
+        </div>
+
+        <div class="filter-section">
+            <h2>Фільтри</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Всі</button>
+                <button class="filter-btn" data-filter="pending">⏳ Очікування</button>
+                <button class="filter-btn" data-filter="completed">✅ Виконано</button>
+            </div>
+            <div class="filter-row">
+                <select id="filter-category">
+                    <option value="">Всі категорії</option>
+                    <option value="Загальне">Загальне</option>
+                    <option value="Робота">Робота</option>
+                    <option value="Особисте">Особисте</option>
+                    <option value="Навчання">Навчання</option>
+                    <option value="Здоров'я">Здоров'я</option>
+                    <option value="Хобі">Хобі</option>
+                </select>
+                <select id="filter-priority">
+                    <option value="">Всі пріоритети</option>
+                    <option value="Низька">🟢 Низька</option>
+                    <option value="Нормальна">🟡 Нормальна</option>
+                    <option value="Висока">🔴 Висока</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="todos-section">
+            <h2 id="todos-title">Завдання</h2>
+            <div id="todos-list" class="todos-list">
+                <p class="empty-state">Завдань не знайдено. Додайте нове! 🚀</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
